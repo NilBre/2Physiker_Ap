@@ -1,6 +1,6 @@
 all: hello.pdf
 
-hello.pdf: hello.tex Teil1.tex header.tex list.tex pers.tex Versuch.tex
+hello.pdf: hello.tex Teil1.tex header.tex list.tex Versuch.tex
 	lualatex hello.tex
 
 #build:
