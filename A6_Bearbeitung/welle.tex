@@ -3,26 +3,25 @@ nun
 \begin{align}
   \nabla \cdot \symbf{E} &= 0\\
     \nabla \cdot \symbf{B} &= 0\\
-      \nabla \times \symbf{E} &= \partial_{t} \symbf{B} .
-      \label{eqn:max3} \\
-        \nabla \times \symbf{B} &= \mu_{0} \epsilon_{0}
-          \partial_{t} \symbf{E}
+      \nabla \times \symbf{E} &= \partial_{t} \symbf{B}
+        \label{eqn:max3} \\
+          \nabla \times \symbf{B} &= \mu_{0} \epsilon_{0}
+            \partial_{t} \symbf{E}
 \end{align}
 Außerdem benutzen wir, dass $\mu_{0} \epsilon_{0}=\frac{1}{c^2}$ gilt.
 Somit ergibt sich, wenn man die Rotation auf \eqref{eqn:max3} anwendet
 
-\begin{equation}
-  \nabla \times \nabla \times \symbf{E} = \nabla \times
+\begin{align}
+  \nabla \times \nabla \times \symbf{E} &= \nabla \times
   \left (\partial_{t} \symbf{B} \right)
-\end{equation}
 
+\intertext{
 Nun kann man im nächsten Schritt die Graßmann Identität
 benutzen und außerdem auch\\
 $\nabla \cdot \symbf{E} = 0$ wie nach Vorraussetzung.
 Zusätzlich können nach dem Satz von Schwarz die Ableitungen
-vertauscht werden.
+vertauscht werden.}
 
-\begin{align}
   \nabla \cdot \left(\nabla \cdot \symbf{E} \right)-
   \triangle \symbf{E} &= \partial_{t}
   \left(\nabla \times \symbf{B} \right)\\
