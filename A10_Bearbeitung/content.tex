@@ -1,0 +1,79 @@
+\documentclass[
+  captions=tableheading,
+]{scrartcl}
+
+\usepackage{scrhack}
+
+\usepackage[aux]{rerunfilecheck}
+
+\usepackage{polyglossia}
+\setmainlanguage{german}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{fontspec}
+
+\usepackage[
+  math-style=ISO,
+  bold-style=ISO,
+  sans-style=italic,
+  nabla=upright,
+  partial=upright,
+]{unicode-math}
+
+\usepackage{float}
+\floatplacement{figure}{htbp}
+\floatplacement{table}{htbp}
+\usepackage[
+  section,
+  below,
+]{placeins}
+
+\usepackage[unicode]{hyperref}
+\usepackage{bookmark}
+
+\begin{document}
+
+\section{Theorie}
+
+Es gilt
+\begin{equation}
+  E = mc^2 .
+  \label{eqn:Einstein}
+\end{equation}
+Einstein beschreibt mit seiner Formel \eqref{eqn:Einstein} den Zusammenhang zwischen Masse und Energie.
+
+\section{Aufbau und Durchführung}
+
+\begin{figure}
+  \centering
+  Ghostfigure
+  \caption{Ohne Bild}
+  \label{fig:ghost}
+\end{figure}
+Abbildung \ref{fig:ghost} enthält noch kein Bild.
+
+\section{Auswertung}
+
+\subsection{Auswertungsteil I}
+
+\begin{table}
+  \centering
+  \caption{Ergebnisse}
+  \label{tab:mytabisaghosttown}
+  Hier fehlt was ;).
+\end{table}
+In Tabelle \ref{tab:mytabisaghosttown} befinden sich die Ergebnisse der Auswertung.
+
+\subsection{Auswertungsteil II}
+\label{sec:Auswertung2}
+
+Hier steht auch noch was.
+
+\section{Diskussion}
+
+Auch der Wert aus Kapitel \ref{sec:Auswertung2} stimmt mit dem Theoriewert aus Kapitel überein.
+
+\end{document}
