@@ -1,4 +1,15 @@
-\documentclass[parskip=half, titlepage=firstiscover]{scrartcl}
+\documentclass[parskip=half, titlepage=firstiscover, captions=tableheading]{scrartcl}
+\usepackage{scrhack}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage[section, below]{placeins}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{float}
+\floatplacement{figure}{htbp}
+\floatplacement{table}{htbp}
+\usepackage{booktabs}
 
 \usepackage{fontspec}
 
@@ -17,6 +28,8 @@ locale=DE,
 separate-uncertainty=true,
 per-mode=symbol-or-fraction]{siunitx}
 
+
+
 \usepackage{polyglossia}
 \setmainlanguage{german}
 
@@ -28,6 +41,5 @@ per-mode=symbol-or-fraction]{siunitx}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 
-\title {\LaTeX Rechnungen zu Aufgabe 6}
+\title {Rechnungen zu Aufgabe 6 in \LaTeX}
 \author {Nils Breer}
-\date{Zuletzt bearbeitet am 3. Oktober 2017}
