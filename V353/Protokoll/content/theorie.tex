@@ -1,0 +1,151 @@
+\section{Theorie}
+\label{sec:Theorie}
+
+\subsection{Allgemein}
+Als Relaxationsprozess bezeichnet man in der Physik im Allgemeinen einen Vorgang, bei dem ein System ohne Oszillationen in seinen ursprünglichen Zustand zurückkehrt. Ein einfaches Anwendungsbeispiel ist ein Stoßdämpfer (gedämpfter harmonischer Oszillator im aperiodischen Grenzfall).\\ \\
+Für eine  Größe $A$ zum Zeitpunkt $t$, deren Änderung mit der Zeit proportional zur Abweichung vom Endzustand ist, gilt:
+
+\begin{equation}
+\label{eqn:1}
+\dot{A}(t) = c\left(A(t) - A(\infty)\right)
+\end{equation}
+Bei \eqref{eqn:1} handelt es sich um eine separierbare Differentialgleichung 1. Ordnung, die sich somit leicht lösen lässt:
+
+\begin{equation}
+\label{eqn:2}
+\begin{alignedat}{2}
+&&\frac{dA(t)}{dt} &= c(A(t) - A(\infty))
+\\
+\implies &&\frac{dA(t)}{A(t) - A(\infty)} &= c \ dt
+\\
+\implies &&\int_0^{t'} \frac{1}{A(t)-A(\infty)} \ dA(t) &= \int_0^{t'}c \ dt \\
+\implies && ln\left(\frac{A(t') - A(\infty)}{A(0)-A(\infty)}\right) &= ct'
+\end{alignedat}
+\end{equation}\\
+
+Damit folgt:
+
+\begin{equation}
+\label{eqn:3}
+A(t) = e^{ct} \left[A(0)-A(\infty)\right] + A(\infty)
+\end{equation}\\
+Aufgrund des Verhaltens von $e^{ct}$ für $t \textrightarrow \infty$ wird sofort klar, dass für physikalisch sinnvolle Ergebnisse $c < 0$ gelten muss.
+Im Folgenden sollen Vorgänge im RC-Kreis mithilfe der hergeleiteten Formel \eqref{eqn:3} betrachtet werden.
+\newpage
+\subsection{Entladen}
+\begin{figure}[h]
+\centering
+\begin{circuitikz}
+ \draw (0,0)
+ to[open,l=$U_c$, *-] (0,2)
+ to[short, i=$I$, *-] (2,2)
+ to[C=$C$, *-] (2,0)
+ to[short, *-] (0,0);
+ \draw (2,2)
+ to[R=$R$] (4,2)
+ to[short] (4,0)
+ to[short] (2,0);
+\end{circuitikz}
+\caption{Entladen des Kondensators}
+\end{figure}
+Mit der Maschenregel gilt: $U_{c} + U_{R} = 0 \Leftrightarrow U_{c} = -U_{R}$ Da eine Reihenschaltung vorliegt, fließt überall der Strom $I$.\\
+Mit dem Ohmschen-Gesetz folgt nun: $U_{c} = -IR$ und wegen $Q=CU_{c}$ und $\frac{dQ}{dt} = I$ folgt:
+\begin{equation}
+\label{eqn:4}
+\frac{dQ(t)}{dt} = -\frac{Q(t)}{RC}
+\end{equation}
+
+Die Differentialgleichung \eqref{eqn:4} lässt sich analog zu \eqref{eqn:1} lösen, wobei die Konstante $c$ hier gleich $-\frac{1}{RC}$ ist und für den vollständig entladenen Kondensator gilt: $Q(\infty) = 0$\\\\
+Aus \eqref{eqn:3} folgt dann:
+\begin{equation}
+Q(t) = e^{-\frac{t}{RC}}Q(0)
+\end{equation}
+
+\subsection{Aufladen}
+\begin{figure}[h]
+\centering
+\begin{circuitikz}
+ \draw (0,0)
+ to[open,l=$U_c$, *-] (0,2)
+ to[short, i=$I$, *-] (2,2)
+ to[C=$C$, *-] (2,0)
+ to[short, *-] (0,0);
+ \draw (2,2)
+ to[R=$R$] (4,2)
+ to[dcvsource, v=$U_0$] (4,0)
+ to[short] (2,0);
+\end{circuitikz}
+\caption{Aufladen des Kondensators}
+\end{figure}
+Für den Aufladevorgang gilt nun $Q(0)=0$ (leerer Kondensator) und mit $Q=CU_0$ folgt $Q(\infty) = CU_0$. Nun folgt aus \eqref{eqn:3}:
+
+\begin{equation}
+\begin{split}
+Q(t) &= -e^{-\frac{t}{RC}} \, CU_0+CU_0 \\
+     &= CU_0\left(1-e^{-\frac{t}{RC}}\right)
+\end{split}
+\end{equation}
+
+\subsection{Zeitkonstante}
+Als Zeitkonstante $\tau$ definiert man das Produkt aus ohmschem Widerstand $R$ und Kondensator-Kapazität $C$. Mit $\tau=RC$ ergeben sich somit folgende Formeln:
+
+
+\begin{align}
+  Q(t) &= Q_0 \, e^{-\frac{t}{\tau}} \label{eqn:7} \\
+  Q(t) &= CU_0\left(1-e^{-\frac{t}{\tau}}\right) \label{eqn:8}
+\end{align}
+
+Wobei \eqref{eqn:7} den Entladevorgang und \eqref{eqn:8} den Aufladevorgang beschreibt. An der Zeitkonstante lässt sich ablesen, wie schnell der Relaxationsprozess abläuft. Je größer $\tau$ ist, desto langsamer geht der Prozess von statten. $\tau$ gibt dabei an, wie lange es dauert, bis die Ladung auf den Wert $\frac{1}{e}Q_0$ gefallen ist. (beim Entladen) \cite[S. 829]{Tipler}
+
+\subsection{Wechselstrom}
+Bisher wurden Relaxationsprozesse nur im Gleichstromkreis betrachtet, diese Ergebnisse sollen nun, vergleichbar zu einem periodisch angeregten Oszillator, auf einen Wechselstromkreis übertragen werden:
+
+\begin{figure}[h]
+\centering
+\begin{circuitikz}
+ \draw (0,2)
+ to[short, i=$I$] (2,2)
+ to[R=$R$] (4,2)
+ to[C=$C$] (4,0)
+ to[short] (0,0)
+ to[vsourcesin, v=$U_{(t)}$](0,2);
+\end{circuitikz}
+\caption{Kondensator im Wechselstromkreis}
+\end{figure}
+
+Für sehr kleine Frequenzen $\omega$ ($\omega \ll \frac{1}{RC}$) fällt über dem Kondensator nahezu $U(t)$ ab. Mit steigender Kreisfrequenz, entsteht durch die Auf- und Entladevorgänge des Kondensators eine Phasenverschiebung $\phi$ zwischen den beiden Spannungen $U(t)$ und $U_c$. Mit der Maschenregel und dem Ansatz $U_c(t) = A(\omega) \ cos(\omega t + \phi(\omega))$ \cite[S. 3]{anleitung} gelangt man zur Gleichung:
+
+\begin{equation}
+U_0 \ cos(\omega t) = I(t)R+A(\omega) \ cos(\omega t + \phi)
+\end{equation}
+
+wegen $Q=CU \implies \dot{Q} = C \dot{U} = I(t)$ also:
+
+\begin{equation}
+\label{eqn:10}
+U_0 \ cos(\omega t) = -A\omega RC \ sin(\omega t + \phi) + A(\omega) \ cos(\omega t + \phi)
+\end{equation}
+\newpage
+Mit den trigonometrischen Beziehungen $sin\left(x+\frac{\pi}{2}\right) = cos(x)$ und \\ $cos\left(x+\frac{\pi}{2}\right) = -sin(x)$ lässt sich \eqref{eqn:10} in eine Gleichung umformen, die die Frequenzabhängigkeit der Phase $\phi$ abbildet:
+
+\begin{equation}
+\label{eqn:11}
+\phi(\omega) = arctan(-\omega RC)
+\end{equation}
+
+Mit dem trigonometrischen Pythagoras ($cos^2(x) + sin^2(x) = 1$) ergeben sich die Gleichungen:
+
+
+\begin{align}
+  sin(\phi) &= \frac{\omega RC}{\sqrt{1+ (\omega RC)^2}} \label{eqn:12} \\
+  A(\omega) &= \frac{U_0}{\sqrt{1+ (\omega RC)^2}} \label{eqn:13}
+\end{align}
+
+Wie an Gleichung \eqref{eqn:13} leicht zu erkennen ist, kann das beschriebene RC-Glied als Tiefpass eingesetzt werden. Für große Frequenzen $\omega \rightarrow \infty$ gilt für die Amplitude $A(\omega) \rightarrow 0$ und für kleine Frequenzen $\omega \rightarrow 0$ gilt $A(\omega) \rightarrow U_0$.
+
+\subsection{Integrator}
+Da eine Proportionalität zwischen der über dem Kondensator abfallenden Spannung $U_c$ und dem Integral über der Eingangsspannung besteht, lässt sich der RC-Kreis auch als Integrator verwenden. Für Frequenzen $\omega \gg \frac{1}{RC}$ gilt näherungsweise die Beziehung:
+
+\begin{equation}
+U_c(t) \approx \frac{1}{RC} \int_0^{t} U(t') \ dt'
+\end{equation}

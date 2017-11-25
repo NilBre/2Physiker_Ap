@@ -1,0 +1,78 @@
+\section{Durchführung}
+\label{sec:Durchführung}
+
+\subsection{Zeitkonstante bestimmen}
+
+\begin{figure}[h]
+\centering
+\begin{circuitikz}
+ \draw (0,0)
+ to[sqV, l=Rechteckgenerator] (0,2)
+ to[R=$R$] (4,2)
+ to[C=$C$,*-*] (4,0)
+ to[short] (0,0);
+ \draw (4,2)
+ to[short] (8,2)
+ to[SCOPE, l=CH1, *-*] (8,0)
+ to[short] (4,0);
+\end{circuitikz}
+\caption{Messschaltung für Bestimmung der Differenzspannung $\Delta U$}
+\label{fig:fig1}
+\end{figure}
+
+Um die Zeitkonstante $\tau$ experimentell zu bestimmen, werden ein Rechteckgenerator und ein Oszilloskop wie in \ref{fig:fig1} beschrieben
+an einen Kodensator angeschlossen. Nach der korrekten Justierung des Triggers und der Eichung der Achsen am Oszilloskop werden in mehreren
+Messungen jeweils die Zeit $t$ und die über dem Kondensator abfallende Spannung $\Delta U$ notiert.
+
+\subsection{Messung der Amplitude}
+
+\begin{figure}[h]
+\centering
+\begin{circuitikz}
+ \draw (0,0)
+ to[sV, l=$U_0$] (0,2)
+ to[R=$R$] (4,2)
+ to[C=$C$,*-*] (4,0)
+ to[short] (0,0);
+ \draw (4,2)
+ to[short] (8,2)
+ to[SCOPE, l=CH1, *-*] (8,0)
+ to[short] (4,0);
+\end{circuitikz}
+\caption{Messschaltung für Bestimmung der Kondensatorspannungsamplitude $\Delta U$}
+\label{fig:fig2}
+\end{figure}
+
+Um die Amplitude der Kondensatorspannung $U_c$ zu vermessen wird eine Schaltung entsprechend \ref{fig:fig2} aufgebaut. Am Sinusgenerator
+werden Frequenzen von $10\,\mathrm{Hz}$ bis $20\,000\,\mathrm{Hz}$ eingestellt und die jeweiligen Amplituden am Oszilloskop ausgelesen und
+notiert. Durch Messung der Spannungsamplitude $U_0$ kann bestätigt werden, dass die Spannung wie erwartet unabhängig von der Frequenz
+$\nu$ ist.
+
+\subsection{Phasenverschiebung}
+
+\begin{figure}[h]
+\centering
+\begin{circuitikz}
+ \draw (0,0)
+ to[sV, l=$U_0$] (0,2)
+ to[R=$R$] (4,2)
+ to[C=$C$,*-*] (4,0)
+ to[short] (0,0);
+ \draw (4,2)
+ to[short] (8,2)
+ to[SCOPE, l=CH1, *-*] (8,0)
+ to[short] (4,0);
+ \draw (0,2)
+  to[short,*-] (0,3)
+  to[short] (11,3)
+  to[SCOPE, l=CH2, *-*] (11,0)
+  to[short] (8,0);
+\end{circuitikz}
+\caption{Phasenverschiebung zwischen Eingangs- und Kondensatorspannung}
+\label{fig:fig3}
+\end{figure}
+
+Für die Messung der enstehenden Phasenverschiebung $\Delta \phi$ zwischen Eingangsspannung $U_0$ und Kondensatorspannung $U_c$ wird ein Zweikanaloszilloskop wie in \ref{fig:fig3} beschrieben eingesetzt. In mehreren Messdurchgängen von $10\,\mathrm{Hz}$ bis $5\,000\,\mathrm{Hz}$ werden jeweils die Zeitdifferenz der Nulldurchgänge der beiden Schwingungen, sowie die Schwingungsdauer mit dem Oszilloskop vermessen und notiert.
+
+\subsection{Integrator}
+Um die Funktionalität des RC-Kreises als Integrator zu untersuchen wird wieder die Schaltung mit dem Zweikanaloszilloskop gewählt. (vgl. \ref{fig:fig3}) Die Frequenz des Frequenzgenerators wird passend gewählt ($\omega \gg \frac{1}{RC}$) und es werden verschiedene Spannungen (Rechteck, Sinus, Dreieck) erzeugt. Auf dem Oszilloskop sind dann jeweils die integrierte sowie die integrierende Spannungskurve sichtbar. Für die Auswertung wird ein Screenshot abgespeichert.
