@@ -1,0 +1,283 @@
+\section{Auswertung}
+\label{sec:Auswertung}
+
+Die direkt aufgenommenen Werte für die Leerlaufspannung $U_0$ und den Innenwiderstand $R_V$ lauten:
+
+\begin{align*}
+  U_0 &= 1,4 \, \si{\volt} \\
+  R_V &\approx 10 \, \si{\mega\ohm}
+\end{align*}
+
+\noindent Um den Innenwiderstand $R_i$ und die Leerlaufspannung $U_0$ der Monozelle bestimmen zu können, werden die gemessenen Werte für $U_k$ gegen \textbf{I} aufgetragen.
+Dieser Plot ist in Abbildung \ref{fig:klemmspannung} zu sehen.
+Mit Python wurd eine lineare Ausgleichsrechnung nach $f = ax + b$ vorgenommen.
+Es ergeben sich nach Gleichung \eqref{eqn:uk} für die Ausgleichsrechnung folgende Werte:
+
+\begin{align*}
+  -a &= R_i = 14,67 \pm 0,28 \, \si{\ohm} \\
+  b &= U_0 = 1,35 \pm 0,01 \, \si{\volt}
+\end{align*}
+
+\noindent Die zugrunde liegenden Messwerte können Tabelle \ref{tab:klemmspannung} entnommen werden.
+
+\begin{table}
+\centering
+\caption{Klemmenspannung $U_k$ in Abhängigkeit von Belastungsstrom $I$ und Belastungswiderstand $R$}
+\label{tab:klemmspannung}
+\sisetup
+{table-format=1.2}
+\begin{minipage}{4.5cm}
+\begin
+{tabular}{S[table-format=3.5] S[table-format=3.2]}
+\toprule
+{$I/\,\si{mA}$} &{$U_k/\,\si{V}$} \\
+\midrule
+86 & 0.05\\
+83 & 0.13\\
+67 & 0.38\\
+61.5 & 0.47\\
+54 & 0.59\\
+48 & 0.69\\
+43 & 0.71\\
+37 & 0.77\\
+34.5 & 0.80\\
+33 & 0.87\\
+30 & 0.90\\
+28 & 0.92\\
+27 & 1.00\\
+26 & 0.96 \footnote{Skalenwechsel am Voltmeter}\\
+25 & 0.99\\
+23.5 & 0.99\\
+22 & 1.02\\
+21 & 1.05\\
+20 & 1.05\\
+19 & 1.08\\
+19 & 1.08\\
+\bottomrule
+\end{tabular}
+\par
+\vspace{-0.75\skip\footins}
+\renewcommand{\footnoterule}{}
+\end{minipage}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{plot.pdf}
+  \caption{Messwerte der Monozelle ohne Gegenspannung mit linearer Ausgleichsgerade}
+  \label{fig:klemmspannung}
+\end{figure}
+
+\noindent Eine ähnliche Rechnung wird für den Versuch mit der Gegenspannungsquelle (vgl. Abbildung \ref{fig:aufbaub}) wiederholt.
+Allerdings muss bei der Bestimmung von $R_i$ und $U_0$ beachtet werden, dass sich die Stromrichtung durch die Gegenspannungsquelle umkehrt.
+Gleichung \eqref{eqn:uk} verändert sich daher zu:
+
+\begin{equation}
+  U_k = U_0 + I R_i
+\end{equation}
+
+\noindent Die Messdaten aus Tabelle \ref{tab:klemmspannung_gegenspannung} werden dafür in Abbildung \ref{fig:klemmspannung_gegenspannung} gegeneinander aufgetragen.
+Auch hier wird eine lineare Ausgleichsrechnung vorgenommen.
+Es ergeben sich dabei folgende Werte:
+
+\begin{align*}
+  a &= R_i = 10,71 \pm 0,41 \, \si{\ohm} \\
+  b &= U_0 = 1,64 \pm 0,03 \, \si{\volt}
+\end{align*}
+
+\begin{table}[H]
+\centering
+\caption{Abhängigkeiten mit angelegter Gegenspannung}
+\label{tab:klemmspannung_gegenspannung}
+\sisetup
+{table-format=1.2}
+\begin{minipage}{4.5cm}
+\begin
+{tabular}{S[table-format=3.0] S[table-format=3.5] S[table-format=3.2]}
+\toprule
+{$R/\,\si{\Omega}$} &{$I/\,\si{mA}$} &{$U_k/\,\si{V}$} \\
+\midrule
+0 & 170.0 & 3.5\\
+2.5 & 160.0 & 3.4\\
+5.0 & 140.0 & 3.1\\
+7.5 & 130.0 & 2.9\\
+10.0 & 120.0 & 2.8\\
+12.5 & 76.0 \footnote{Skalenwechsel Amperemeter} & 2.6\\
+15.0 & 71.0 & 2.55 \footnote{Skalenwechsel Voltmeter}\\
+17.5 & 65.0 & 2.43\\
+20.0 & 61.5 & 2.37\\
+22.5 & 57.5 & 2.31\\
+25.0 & 54.5 & 2.25\\
+27.5 & 51.0 & 2.22\\
+30.0 & 48.5 & 2.16\\
+32.5 & 47.0 & 2.13\\
+35.0 & 45.0 & 2.10\\
+37.5 & 43.0 & 2.07\\
+40.0 & 41.0 & 2.04\\
+42.5 & 39.0 & 2.01\\
+45.0 & 38.0 & 1.98\\
+47.5 & 37.0 & 1.98\\
+50.0 & 36.0 & 1.95\\
+\bottomrule
+\end{tabular}
+\par
+\vspace{-0.75\skip\footins}
+\renewcommand{\footnoterule}{}
+\end{minipage}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{plot2.pdf}
+  \caption{Messwerte der Monozelle mit Gegenspannung mit linearer Ausgleichsgerade}
+  \label{fig:klemmspannung_gegenspannung}
+\end{figure}
+
+\noindent Die Berechnungen für die Rechteck- und Sinusspannungsquelle erfolgen wieder mit Gleichung \eqref{eqn:uk}.
+Die Messwerte für die Rechteckspannung sind in Tabelle \ref{tab:klemmspannung_rechteck}, die für die Sinusspannung in Tabelle \ref{tab:klemmspannung_sinus} zu finden.
+Diese Ergebnisse wurden in Abbildung \ref{fig:klemmspannung_rechteck} aufgetragen.
+Auch hier wird eine lineare Regression durchgeführt.
+Entsprechendes für die Sinusspannung ist in Abbildung \ref{fig:klemmspannung_sinus} zu finden.
+Damit ergibt sich für $R_i$ und $U_0$:
+
+\begin{align*}
+  \text{Rechteckspannung: }
+    -a &= R_i = 61,0 \pm 1,7  \, \si{\ohm} \\
+    b &= U_0 = 592,5 \pm 7,3 \, \si{\milli\volt} \\
+  \text{Sinusspannung: }
+  -a &= R_i = 711,26 \pm 4,92  \, \si{\ohm} \\
+  b &= U_0 = 1089,14 \pm 2,66 \, \si{\volt} \\
+\end{align*}
+
+\begin{table}
+\centering
+\caption{Abhängigkeiten mit Rechteckausgang}
+\label{tab:klemmspannung_rechteck}
+\sisetup
+{table-format=1.2}
+\begin
+{tabular}{S[table-format=3.0] S[table-format=3.5] S[table-format=3.2]}
+\toprule
+{$R/\,\si{\Omega}$} &{$I/\,\si{mA}$} &{$U_k/\,\si{mV}$} \\
+\midrule
+20.0 & 7.5 & 110\\
+31.5 & 7.4 & 115\\
+43.0 & 6.3 & 230\\
+54.5 & 5.6 & 260\\
+66.0 & 5.2 & 290\\
+77.5 & 4.7 & 320\\
+89.0 & 4.3 & 350\\
+100.5 & 4.0 & 355\\
+112.0 & 3.8 & 370\\
+123.5 & 3.5 & 380\\
+135.0 & 3.3 & 390\\
+146.5 & 3.1 & 400\\
+158.0 & 3.0 & 410\\
+169.5 & 2.8 & 420\\
+181.0 & 2.7 & 425\\
+192.5 & 2.6 & 430\\
+204.0 & 2.5 & 440\\
+215.5 & 2.4 & 440\\
+227.0 & 2.3 & 445\\
+238.5 & 2.2 & 450\\
+250.0 & 2.1 & 450\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{plot3.pdf}
+  \caption{Messwerte der Rechteckspannungsquelle mit linearer Ausgleichsgerade}
+  \label{fig:klemmspannung_rechteck}
+\end{figure}
+
+\begin{table}
+\centering
+\caption{Abhängigkeiten mit Sinusausgang}
+\label{tab:klemmspannung_sinus}
+\sisetup
+{table-format=1.2}
+\begin{minipage}{4.5cm}
+\begin
+{tabular}{S[table-format=3.0] S[table-format=3.5] S[table-format=3.2]}
+\toprule
+{$R/\,\si{\Omega}$} &{$I/\,\si{mA}$} &{$U_k/\,\si{mV}$} \\
+\midrule
+100 & 1.11 & 300\\
+345 & 1.08 & 320\\
+590 & 0.99 & 380\\
+835 & 0.78 & 530\\
+1080 & 0.63 & 630\\
+1325 & 0.57 & 690\\
+1570 & 0.51 \footnote{Skalawechsel Amperemeter} & 740\\
+1815 & 0.45 & 780\\
+2060 & 0.40 & 810\\
+2305 & 0.36 & 830\\
+2550 & 0.35 & 850\\
+2795 & 0.31 & 870\\
+3040 & 0.29 & 880\\
+3285 & 0.27 & 900\\
+3530 & 0.25 & 910\\
+3775 & 0.23 & 920\\
+4020 & 0.21 & 940\\
+4265 & 0.20 & 950\\
+4510 & 0.18 & 955\\
+4755 & 0.17 & 960\\
+5000 & 0.16 & 970\\
+\bottomrule
+\end{tabular}
+\par
+\vspace{-0.75\skip\footins}
+\renewcommand{\footnoterule}{}
+\end{minipage}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{plot4.pdf}
+  \caption{Messwerte der Sinusspannungsquelle mit linearer Ausgleichsgerade}
+  \label{fig:klemmspannung_sinus}
+\end{figure}
+
+\noindent Außer Acht gelassen wurde bisher, dass ein Voltmeter über einen endlichen Eingangswiderstand $R_V$ verfügt.
+In den Berechnungen kommt es somit zu einem systematischen Fehler bei der entsprechenden Messung der Leerlaufspannung.
+Die Gleichung \ref{eqn:klemmspannung} lässt sich dann zu
+
+\begin{equation}
+  U_0 = U_k + U_k\frac{R_i}{R_a}
+\end{equation}
+
+\noindent umstellen.
+$U_k$ entspricht dabei dem im ersten Messvorgang aufgenommenen $U_0 = 1,4 \,\si{\volt}$.
+$R_a$ hingegen dem Wert von $R_V = 10 \, \si{\mega\ohm}$.
+Die Berechnung des Fehler erfolgt somit mit
+
+\begin{align*}
+  \Delta U_0 &= U_0 - U_k = 2,0538 \, \si{\micro\ohm} \\
+  \frac{\Delta U_0}{U_k} &= 1,467 \cdot 10^{-4} \, \%
+\end{align*}
+
+\noindent Die systematischen Fehler sind somit sehr gering und werden auch im Folgenden nicht weiter beachtet. \\
+Ein systematischer Fehler würde gemacht werden, sollte das Voltmeter noch hinter das Amperemeter geschalten werden.
+Dies meint hinter den Punkt \textbf{H} in Abbildung \ref{fig:aufbaua}.
+In diesem Fall würde das Voltmeter nicht nur den Spannungsabfall über der Spannungsquelle abgreifen, sondern auch den über dem Amperemeter.
+Dies würde bedeuten, dass nicht mehr die reine Klemmspannung $U_k$ abgegriffen werden würde.
+
+\newpage
+
+\noindent Anhand der gemessenen Spannung $U_0$ und des Innenwiderstandes $R_i$ der Monozelle, lässt sich die am Lastwiderstand umgesetzte Leistung errechnen.
+Die gemessenen Werte werden dabei mit dem theoretisch berechneten Verlauf verglichen:
+
+\begin{equation}
+  P = \frac{U_0^2}{(R_i + R_a)^2} R_a
+\end{equation}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{plot5.pdf}
+  \caption{Umgesetzte Leistung am Lastwiderstand}
+  \label{fig:leistung}
+\end{figure}
+
+\noindent Die zu beobachtenden Abweichungen von maximal ca. $0,007 \,\mathrm{V}$ liegen im Bereich der Messungenauigkeit.

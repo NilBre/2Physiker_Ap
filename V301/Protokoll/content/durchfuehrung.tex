@@ -1,0 +1,100 @@
+\section{Durchführung}
+\label{sec:Durchführung}
+
+Zunächst wird die Leerlaufspannung $U_0$, der gegebenen Monozelle, gemessen.
+Dafür wird lediglich ein Voltmeter mit dieser verbunden.
+Die gemessene Spannung und der Eingangs-/ Innenwiderstand $R_V$ des Voltmeters werden dabei vermerkt.
+Anschließend wird die Schaltung gemäß Abbildung \ref{fig:aufbaua} aufgebaut.
+Das Voltmeter von vorher bleibt parallel geschaltet und soll weiterhin den Spannungsabfall dokumentieren.
+$R_a$ verfügt hierbei über eine Spektrum von $10 - 20\,\si{\ohm}$.
+Es sollten mindestens 20 Messpaare von der Klemmenspannung $U_k$ und des Belastungsstroms \textbf{I} genommen werden.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \begin{circuitikz}[line width=0.5pt]
+      \draw(0,0)
+      to[battery1,thick] (0,3) -- (0,4)
+      to[short, i=$I$] (1,4)
+      (1,4) to[short] (3,4)
+      node[draw,circle,fill=white,minimum size=10pt,text=white,thick]{V}
+      (3,4) to[short, -] (5,4);
+      \draw(5,1.3) to[tgeneric] (5,4);
+      \draw (5,0) to[short] (5,0.7)
+      (5,0) to[short] (0,0)
+      (2,0) to[short, *-] (2,2)
+      node[draw,circle,fill=white,minimum size=10pt,text=white,thick]{V}
+      (2,2) to[short, -*] (2,4)
+      (4,4) to[short, *-] (4,3.5)
+      (4,4) node[above] {H}
+      (4.6,1) node[above,rotate=270,thick] {\huge$\top$}
+      (2.3,2) node[right]{V}
+      (2.8,4.2) node[above left]{A}
+      (0.1,1.6) node[above left,thick]{+}
+      (0,1.4) node[below left,thick]{-}
+      (1,0) to[short,->] (1,0.7)
+      (1,4) to[short,->] (1,1.3)
+      (1,0.7) node[above] {$U_k$};
+      \draw[->,thick]  (1.6,1.6) -- (2.4,2.4);
+      \draw[->,thick]  (2.6,3.6) -- (3.4,4.4);
+      \draw[->,thick]  (1,0.7) -- (1,0);
+      \draw[->,thick]  (1,1.3) -- (1,4);
+    \end{circuitikz}
+    \caption{Messschaltung zur Bestimmung von $U_0$ und $R_i$}
+    \label{fig:aufbaua}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \begin{circuitikz}[line width=0.5pt]
+      \draw(0,0)
+      to[battery1,thick] (0,3) -- (0,4)
+      to[short, i=$I$] (1,4)
+      (1,4) to[short] (3,4)
+      node[draw,circle,fill=white,minimum size=10pt,text=white,thick]{V}
+      (3,4) to[short, -] (5,4);
+      \draw(5,2.3) to[tgeneric] (5,4);
+      \draw (5,0) to[dcvsource] (5,1.7)
+      (5,0) to[short] (0,0)
+      (2,0) to[short, *-] (2,2)
+      node[draw,circle,fill=white,minimum size=10pt,text=white,thick]{V}
+      (2,2) to[short, -*] (2,4)
+      (4.6,2) node[above,rotate=270,thick] {\huge$\top$}
+      (2.3,2) node[right]{V}
+      (2.8,4.2) node[above left]{A}
+      (0.1,1.6) node[above left,thick]{+}
+      (0,1.4) node[below left,thick]{-}
+      (4.7,1.1) node[above left,thick]{+}
+      (4.6,0.6) node[below left,thick]{-}
+      (1,0) to[short,->] (1,0.7)
+      (1,4) to[short,->] (1,1.3)
+      (1,0.7) node[above] {$U_k$};
+      \draw[->,thick]  (1.6,1.6) -- (2.4,2.4);
+      \draw[->,thick]  (2.6,3.6) -- (3.4,4.4);
+      \draw[->,thick]  (1,0.7) -- (1,0);
+      \draw[->,thick]  (1,1.3) -- (1,4);
+    \end{circuitikz}
+    \caption{wie Abbildung \ref{fig:aufbau}.\subref{fig:aufbaua} jedoch unter Verwendung einer Gegenspannung}
+    \label{fig:aufbaub}
+  \end{subfigure}
+  \caption{Schaltbilder der im Versuch benutzten Aufbauten}
+  \label{fig:aufbau}
+\end{figure}
+
+\noindent Nachfolgend wird die Schaltung gemäß Abbildung \ref{fig:aufbaub} modifiziert.
+D.h., es wird nach dem Widerstand $R_a$ eine zusätzliche Gleichspannungsquelle angelegt.
+Diese verfügt über die umgekehrte Polung der anderen Monozelle und weist etwa $2 \mathrm{V}$ mehr Spannung auf.
+Danach wird wie oben bereits beschrieben, verfahren.
+Der Widerstand $R_a$ wird erneut von $0-50 \si{\ohm}$ variiert und zwar so, dass erneut 20 Messwerte gemessen werden können.
+Für die abschließenden Messungen wird die zweite Spannungsquelle wieder entfernt.
+Die Schaltung ergibt sich also wieder wie in Abbildung \ref{fig:aufbaua}.
+Allerdings wird statt einer Monozelle der Sinus-, bzw. Rechteck-ausgang eines RC- Generators verwendet.
+Für den Rechteckausgang wird ein Widerstand $R_a$ genutzt, dessen Variatonsbereich bei $20-250 \si{\ohm}$ liegt.
+Für die Messung muss an dem RC- Generator die Einstellung für $1 \si{\volt}$ ausgewählt werden.
+Die Amplitude wird für die Rechteckspannung komplett aufgedreht.
+Für die Messung werden erneut 20 Werte des Ampere- und Voltmeters abgelesen.
+Dies wird ebenfalls für die Sinusspannung wiederholt.
+Auch hier wird $1 \si{\volt}$ und die volle Sinusamplitude verwendet.
+Der Widerstand $R_a$ verfügt nun allerdings über einen Variationsbereich von $0,1 - 5 \,\si{\kilo\ohm}$.
+Es werden erneut 20 Messwerte des Ampere- und Voltmeters abgelesen.
